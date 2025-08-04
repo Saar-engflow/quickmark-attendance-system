@@ -1,0 +1,412 @@
+* {
+  color: white;
+  font-family: sans-serif;
+  margin: 0;
+  text-decoration: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* responsive background image */
+  /* background-image: url("/QuickMark/assets/images/b4.jpg"); */
+
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  background: #000000;
+  background: -webkit-linear-gradient(
+    142deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 59%,
+    rgba(0, 54, 45, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    142deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 59%,
+    rgba(0, 54, 45, 1) 100%
+  );
+  background: linear-gradient(
+    142deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 59%,
+    rgba(0, 54, 45, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#00362D", GradientType=0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 180px;
+}
+button {
+  color: black;
+  width: 140px;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+}
+button:hover {
+  background-color: aqua;
+  color: white;
+}
+/* navbar */
+.navbar-D {
+  display: none;
+}
+.navbar {
+  background-color: #000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+
+  z-index: 2;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  gap: 0.5rem;
+}
+
+.logo img {
+  height: 32px;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.hamburger div {
+  background: #ffffff;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.nav-links {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  position: absolute;
+  top: 64px;
+  right: 20px;
+  left: 60px;
+  height: 400px;
+  background: #4d4d4d;
+  padding: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+}
+
+/* Show menu when active */
+.nav-links.active {
+  display: flex;
+}
+
+/* text alterations */
+
+.bold-title {
+  font-weight: 900;
+  font-size: 50px;
+}
+
+.plain-text {
+  font-size: 20px;
+}
+
+.small-text {
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+/* positions */
+
+.marg {
+  margin-bottom: 100px;
+}
+.marg-top {
+  margin-top: 180px;
+}
+
+/* modules */
+.doc-section,
+.pricing,
+.contact {
+  padding-top: 180px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-container {
+  margin-bottom: 20px;
+}
+.hero-container,
+.hero-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.hero-card-container {
+  width: 300px;
+
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 10);
+}
+
+.logo-container {
+  /* responsive background image */
+  background-image: url("/assets/images/QuickMark.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 40px;
+
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+
+  margin-bottom: 20px;
+}
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 8px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* animations */
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.8s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-fade-in {
+  opacity: 0;
+  transform: translateX(180px);
+  animation: slideFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* responsiveness */
+@media (min-width: 768px) {
+  section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+  }
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    /* margin-bottom: 100px; */
+  }
+
+  .hero-card-container {
+    width: 180px;
+    margin-top: 80px;
+    padding: 30px;
+  }
+  /* text alterations */
+
+  .bold-title {
+    font-weight: 900;
+    font-size: 30px;
+  }
+
+  .plain-text {
+    font-size: 16px;
+  }
+  .logo-container {
+    width: 200px;
+    height: 200px;
+  }
+  .info-container {
+    position: absolute;
+    bottom: 20px;
+  }
+  .upperContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    /* margin-top: 40px; */
+    padding: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  a {
+    margin-left: 20px;
+  }
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 180px;
+  }
+  /* navbar */
+  .navbar {
+    display: none;
+  }
+  .navbar-D {
+    background-color: #000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    gap: 10px;
+    z-index: 2;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 60px;
+    gap: 0.5rem;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+  .navLinks {
+    margin-right: 60px;
+  }
+  .hero-card-container {
+    margin-top: 120px;
+    width: 300px;
+    padding: 30px;
+  }
+
+  .hero-container {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 4px;
+  }
+  /* text alterations */
+
+  .bold-title {
+    font-weight: 900;
+    font-size: 50px;
+  }
+
+  .plain-text {
+    margin-top: -60px;
+    font-size: 20px;
+  }
+  .logo-container {
+    width: 300px;
+    height: 300px;
+  }
+  .info-container {
+    position: absolute;
+    bottom: 20px;
+  }
+  .upperContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    /* margin-top: 40px; */
+    padding: 8px;
+  }
+}
