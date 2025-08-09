@@ -1,0 +1,37 @@
+Quick mark algorithm
+
+1.users go to the website to register their details
+2.a page that requires role of user(student / lecture/ admin) 
+3.a sign up page comes up with roles with requirements as follows:
+ if
+   (student)
+
+  full names
+
+  institute 
+  student id number
+  email
+  create password
+
+ then the student has to login .
+  
+4.a prompt which will ask the student to open the mobile app
+
+
+  (lecturer)
+
+  full names
+
+  institute 
+  lecture id number
+  email
+  create password
+
+then the lecturer has to login .
+then hell be directed to the system web app 
+  
+   (admin)
+  just logs in with the details
+  then go to the admin panel
+
+
