@@ -58,6 +58,17 @@ button:hover {
   background-color: aqua;
   color: white;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 480px;
+}
+label {
+  margin-top: 10px;
+}
 /* navbar */
 .navbar-D {
   display: none;
@@ -200,7 +211,19 @@ button:hover {
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 10);
 }
+.form-group {
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 10);
 
+  margin-top: 40px;
+  padding: 1rem;
+}
+.input-bar {
+  border: none;
+  margin-left: 14px;
+  padding: 12px;
+  border-radius: 10px;
+}
 .logo-container {
   /* responsive background image */
   background-image: url("/QuickMark/assets/images/QuickMark.png");
@@ -233,7 +256,18 @@ button:hover {
   margin-top: 40px;
   margin-bottom: 40px;
 }
-
+.input-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  width: 100%;
+}
+.below-btm {
+  padding-top: 20px;
+}
 /* animations */
 
 .fade-in {
@@ -336,6 +370,42 @@ button:hover {
   }
   a {
     margin-left: 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .below-btm {
+    display: flex;
+  }
+  .input-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    width: 100%;
+  }
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 180px;
+  }
+  /* navbar */
+  .navbar {
+    display: none;
+  }
+  .navbar-D {
+    background-color: #000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    justify-content: center;
+    padding: 10px;
+    /* margin-bottom: 100px; */
   }
   .container {
     flex-direction: row;
