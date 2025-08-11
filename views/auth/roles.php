@@ -5,11 +5,11 @@
 </div>
   <div class = "role-container">
     <button 
-      onclick = "window.location.href = 'register.php '"; >Student</button>
+      onclick = "window.location.href = 'register.php? role=student '"; >Student</button>
        <button 
-      onclick = "window.location.href = 'register.php '"; >Lecturer</button>
+      onclick = "window.location.href = 'register.php? role=lecturer '"; >Lecturer</button>
        <button 
-      onclick = "window.location.href = 'register.php '"; >Admin</button>
+      onclick = "window.location.href = 'register.php? role=admin '"; >Admin</button>
       <button 
       onclick = "window.location.href = '../../index.php '"; >Back</button>
 

@@ -15,7 +15,9 @@ Quick mark algorithm
 
  then the student has to login .
   
-4.a prompt which will ask the student to open the mobile app
+.a prompt which will ask the student to open the mobile app
+after the student opens the mobile app , he or she will be directed to the student dashboard where the student has to 
+clock in with juc one single button when the lecturer prompts u to do so.
 
 
   (lecturer)

@@ -69,6 +69,9 @@ form {
 label {
   margin-top: 10px;
 }
+input {
+  color: #000;
+}
 /* navbar */
 .navbar-D {
   display: none;
