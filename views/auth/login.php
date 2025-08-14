@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <div class = "below-btm mt-r">
        
         <div class = "button-container">
-    <a href = "register.php" class = "button">Register</a>
+    <a href = "roles.php" class = "button">Register</a>
         </div>
     </div>
    

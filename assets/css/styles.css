@@ -72,6 +72,17 @@ label {
 input {
   color: #000;
 }
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flex-r {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* navbar */
 .navbar-D {
   display: none;
@@ -194,6 +205,8 @@ input {
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-container {
@@ -313,7 +326,114 @@ input {
   background-color: #0b5c51;
   color: #ffffff;
 }
+/* Lecturer - section */
+.location-container {
+  width: 100%;
+  border-radius: 14px;
+  background-color: #0b5c51;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.info-containerX {
+  border-radius: 14px;
 
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  min-width: 300px;
+  height: 300px;
+}
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* students clocked into lecturer */
+.clock-in-container {
+  border: 1px solid rgb(22, 44, 44);
+  border-radius: 14px;
+  width: 300px;
+  height: 300px;
+}
+/* lecture info */
+.lecturer-user-profile {
+  border: 1px solid rgb(22, 44, 44);
+
+  border-radius: 14px;
+  gap: 16px;
+  height: 100px;
+  width: 300px;
+  padding-left: 10px;
+}
+.lecturer-profile-pic {
+  /* responsive background image */
+  background-image: url("/QuickMark/assets/images/pink.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+}
+.lecturer-profile-infor {
+  align-items: start;
+  gap: 10px;
+  height: 80px;
+  width: 180px;
+}
+.lecturer-window-info {
+  border: 1px solid rgb(22, 44, 44);
+  border-radius: 14px;
+  height: 180px;
+  width: 300px;
+  margin-top: 8px;
+  padding-left: 10px;
+  gap: 16px;
+}
+.lecturer-window-infoX {
+  justify-content: left;
+  height: 60px;
+  width: 280px;
+}
+.ml {
+  margin-left: 10px;
+}
+/* general */
+body {
+  background-color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 48px;
+  color: #0b5c51;
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  font-size: 36px;
+  color: #0b5c51;
+  margin: 0;
+}
+select {
+  color: #000000;
+}
+option {
+  color: #000000;
+}
 /* responsiveness */
 @media (min-width: 768px) {
   section {
@@ -525,6 +645,36 @@ input {
     align-items: center;
     justify-content: center;
     background-color: rgba(14, 221, 194, 0.2);
+    padding: 40px;
+  }
+  .right-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    margin-top: -180px;
+  }
+  .clock-in-container {
+    margin-bottom: -60px;
+    margin-top: 60px;
+  }
+  .left-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+  }
+  .location-container {
+    width: 400px;
+  }
+
+  .lecturer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 1000px;
+    height: 600px;
     padding: 40px;
   }
 }
