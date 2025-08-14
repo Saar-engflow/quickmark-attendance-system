@@ -410,6 +410,66 @@ input {
 .ml {
   margin-left: 10px;
 }
+/* admin-side */
+.admin-container {
+  padding: 10px;
+  max-width: 1200px;
+}
+.header-sec {
+  padding: 2px;
+  gap: 10px;
+  align-items: start;
+}
+.counts-container {
+  margin-top: 60px;
+
+  padding: 12px;
+  gap: 40px;
+}
+.count {
+  background-color: rgba(11, 92, 81, 0.1);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 10);
+  border-radius: 14px;
+  padding: 20px;
+  width: 220px;
+  align-items: center;
+}
+.count-num {
+  font-weight: 900;
+  font-size: 100px;
+}
+.count-title {
+  font-size: 30px;
+  border-bottom: 2px soild white;
+}
+
+.user-m {
+  background-color: rgba(11, 92, 81, 0.1);
+  border-radius: 14px;
+  width: 300px;
+  min-height: 200px;
+  padding: 2px;
+  overflow: hidden;
+}
+.user-m-header {
+  border: 1px solid rgb(22, 44, 44);
+  border-radius: 14px;
+  width: 100%;
+  padding: 20px;
+}
+.user-m-cont {
+  background-color: rgba(11, 92, 81, 0.2);
+  border-radius: 14px;
+  width: 100%;
+  padding: 20px;
+  min-height: 200px;
+}
+.user-m-footer {
+  background-color: rgba(11, 92, 81, 0.5);
+  border-radius: 14px;
+  width: 100%;
+  padding: 20px;
+}
 /* general */
 body {
   background-color: #ffffff;
@@ -676,5 +736,11 @@ option {
     width: 1000px;
     height: 600px;
     padding: 40px;
+  }
+  .admin-container {
+    margin-top: 120px;
+  }
+  .counts-container {
+    flex-direction: row;
   }
 }
