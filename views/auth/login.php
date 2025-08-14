@@ -23,11 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             $_SESSION['role'] = $role;
 
             if ($role === 'admin') {
-                header("Location: ../../../views/admin/dashboard.php");
+                header("Location: /QuickMark/views/admin/dashboard.php");
             } elseif ($role === 'lecturer') {
-                header("Location: ../../../views/lecturers/dashboard.php");
+                header("Location: /QuickMark/views/lecturers/dashboard.php");
             } else {
-                header("Location: ../../../views/students/dashboard.php");
+                header("Location: /QuickMark/views/students/dashboard.php");
             }
             exit();
         } else {

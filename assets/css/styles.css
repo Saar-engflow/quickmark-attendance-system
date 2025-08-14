@@ -296,6 +296,23 @@ input {
     transform: translateX(0);
   }
 }
+/* student side section */
+.student-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  max-width: 300px;
+}
+.app-button {
+  margin-bottom: 40px;
+  border-radius: 40px;
+  background-color: #0b5c51;
+  color: #ffffff;
+}
 
 /* responsiveness */
 @media (min-width: 768px) {
@@ -500,5 +517,14 @@ input {
     gap: 40px;
     /* margin-top: 40px; */
     padding: 8px;
+  }
+
+  .app-b-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(14, 221, 194, 0.2);
+    padding: 40px;
   }
 }
