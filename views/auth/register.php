@@ -1,6 +1,5 @@
 <?php 
-$role= $_GET['role'] ?? '';?>
-<?php 
+$role= $_GET['role'] ?? '';
 session_start();
 include "../../includes/db_connect.php";
 
@@ -17,40 +16,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
     $password = $_POST['password']; // raw for hashing
     $institute = clean_input($_POST['institute']);
     $role = clean_input($_POST['role']);
-     $userid = clean_input($_POST['userid']);
+    $userid = clean_input($_POST['userid']);
 
     $valid_roles = ['student', 'lecturer', 'admin'];
     if (!in_array($role, $valid_roles)) {
         die("Invalid role selected.");
     }
 
-    // Check if email exists
-    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    // Check if email exists in user_request table
+    $stmt = $conn->prepare("SELECT user_id FROM user_requests WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
     if ($stmt->num_rows > 0) {
         $stmt->close();
-        die("Email already registered.");
+        die("Email already registered (pending approval).");
     }
     $stmt->close();
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO users (user_id,firstName, lastName, email, password, institute, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssss",$userid, $firstName, $lastName, $email, $hashed_password, $institute, $role);
+    // Insert into user_requests table
+    $stmt = $conn->prepare("INSERT INTO user_requests (user_id, firstName, lastName, email, password, institute, role, requested_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())");
+    $stmt->bind_param("sssssss", $userid, $firstName, $lastName, $email, $hashed_password, $institute, $role);
+
     if ($stmt->execute()) {
-        $stmt->close();
-        header("Location: login.php?signup=success");
+        echo "<script>
+            alert('Thank you, the admin will approve your request shortly. Try to login after a few minutes. If you still don\\'t have access after 24 hours kindly contact ‪+260774654642‬');
+            window.location.href = 'login.php';
+        </script>";
         exit();
     } else {
-        die("Error registering user: " . $conn->error);
+        die("Error registering user: " . $stmt->error);
     }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
-
-
-
 
 
 

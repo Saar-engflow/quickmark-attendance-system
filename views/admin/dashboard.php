@@ -92,9 +92,16 @@ $adminCount = $result->fetch_assoc()['count'];
         <div class= "user-m-header flex-c">
          <h4>User Requests</h4>
         </div>
-        <div class ="user-m-cont flex-c">
-         <p >......</p>
-        </div>
+
+       <div class="user-m-cont flex-c">
+    <p>
+        <?php
+        $reqResult = $conn->query("SELECT COUNT(*) AS requestCount FROM user_requests");
+        $requestCount = $reqResult->fetch_assoc()['requestCount'];
+        echo $requestCount . " request" . ($requestCount != 1 ? "s" : "");
+        ?>
+    </p>
+</div>
         
         <div class = "user-m-footer flex-c">
           <button
