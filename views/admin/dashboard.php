@@ -1,4 +1,10 @@
+<?php 
+session_start(); 
+$firstName = $_SESSION['firstName'] ?? 'Admin';
+?>
+
 <?php include '../../includes/header.php' ; ?>
+<?php include '../../includes/db_connect.php' ; ?>
 <!-- mobile navigation -->
    <header class="navbar">
   <div class="logo">
@@ -33,31 +39,50 @@
 <section>
   <div  class = admin-container>
     <div class = "header-sec flex-c">
-    <h1>hey Admin ;]</h1>
-  <p>there are currently x number of QuickMark users</p>
+    <h1>hey  <?php echo htmlspecialchars($firstName) ?> ;]</h1>
+    <?php
+    //fetch the total number of users
+    $result = $conn->query("SELECT COUNT(*)  as totalUsers FROM users");
+    $row = $result->fetch_assoc();
+    $totalUsers = $row['totalUsers'];
+    ?>
+  <p>there are currently <span class = "tnum" ><?php echo $totalUsers; ?></span> number of QuickMark users</p>
     </div>
 
     <div class = "counts-container flex-c">
+      <?php
+// Count students
+$result = $conn->query("SELECT COUNT(*) as count FROM users WHERE role = 'student'");
+$studentCount = $result->fetch_assoc()['count'];
+
+// Count lecturers
+$result = $conn->query("SELECT COUNT(*) as count FROM users WHERE role = 'lecturer'");
+$lecturerCount = $result->fetch_assoc()['count'];
+
+// Count admins
+$result = $conn->query("SELECT COUNT(*) as count FROM users WHERE role = 'admin'");
+$adminCount = $result->fetch_assoc()['count'];
+?>
       
          <div class = "count flex-c">
           <div class ="count-title">
  <h4 class = "">Students</h4>
           </div>
-           <p class="count-num">0</p>
+           <p class="count-num"><?php  echo $studentCount; ?></p>
          </div>
 
                   <div class = "count flex-c">
           <div class ="count-title">
  <h4 class = "">Lecturers</h4>
           </div>
-           <p class="count-num">0</p>
+           <p class="count-num"><?php  echo $lecturerCount; ?></p>
          </div>
 
                   <div class = "count flex-c">
           <div class ="count-title">
  <h4 class = "">Admins</h4>
           </div>
-           <p class="count-num">1</p>
+           <p class="count-num"><?php  echo $adminCount; ?></p>
          </div>
     </div>
 
@@ -68,11 +93,13 @@
          <h4>User Requests</h4>
         </div>
         <div class ="user-m-cont flex-c">
-         <p>nothing yet</p>
+         <p >......</p>
         </div>
         
         <div class = "user-m-footer flex-c">
-          <button>open</button>
+          <button
+          onclick = ' window.location.href = "user_request.php"';
+          >open</button>
         </div>
         </div>
 
@@ -81,7 +108,7 @@
      <h4>User Management</h4>
         </div>
         <div class ="user-m-cont flex-c">
-         <p>nothing yet</p>
+         <p class="count-num"><?php echo $totalUsers; ?></p>
         </div>
         <div class = "user-m-footer flex-c">
           <button>open</button>
