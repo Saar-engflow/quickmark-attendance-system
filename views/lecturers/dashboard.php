@@ -6,13 +6,14 @@
     <span>QuickMark</span>
   </div>
 
- 
+       <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
   <nav class="nav-links" id="nav-links">
-  
-    <a href="#home">Home</a>
-    <a href="#doc">Documentation</a>
-  
+  <a href="../auth/logout.php">Logout</a>
     
    
   </nav>
@@ -28,6 +29,7 @@
  
 
   <nav class="navLinks">
+    <a href="../auth/logout.php">Logout</a>
   </nav>
 </header>
 

@@ -12,13 +12,16 @@ $firstName = $_SESSION['firstName'] ?? 'Admin';
     <span>QuickMark</span>
   </div>
 
- 
+    <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
   <nav class="nav-links" id="nav-links">
   
-    <a href="#home">Home</a>
-    <a href="#doc">Documentation</a>
-  
+   
+     <a href="../auth/logout.php">Logout</a>
     
    
   </nav>
@@ -30,10 +33,8 @@ $firstName = $_SESSION['firstName'] ?? 'Admin';
     <img src="/QuickMark/assets/images/QuickMark.png" alt="QuickMark Logo" />
     <span>QuickMark</span>
   </div>
-
- 
-
-  <nav class="navLinks">
+   <nav class="navLinks">
+     <a href="../auth/logout.php">Logout</a>
   </nav>
 </header>
 <section>
