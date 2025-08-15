@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include "../../includes/db_connect.php";
 
@@ -12,16 +12,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $email = clean_input($_POST['email']);
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, firstName, password, role FROM users WHERE email = ?");
+    // Fetch user_id (not primary key), firstName, password, role
+    $stmt = $conn->prepare("SELECT user_id, firstName, password, role FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $stmt->bind_result($id, $firstName, $hashed_password, $role);
+    $stmt->bind_result($user_id, $firstName, $hashed_password, $role);
+
     if ($stmt->fetch()) {
         if (password_verify($password, $hashed_password)) {
-            $_SESSION['user_id'] = $id;
+            // Set correct sessions
+            $_SESSION['user_id'] = $user_id;      // <- user_id column, for lecturer ID
             $_SESSION['firstName'] = $firstName;
             $_SESSION['role'] = $role;
 
+            // Redirect based on role
             if ($role === 'admin') {
                 header("Location: /QuickMark/views/admin/dashboard.php");
             } elseif ($role === 'lecturer') {
@@ -38,11 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     }
     $stmt->close();
 }
-
-
 ?>
-
-
 
 
 

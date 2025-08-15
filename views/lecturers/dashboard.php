@@ -1,4 +1,14 @@
+<?php 
+session_start(); 
+include '../../includes/db_connect.php'; 
+
+$lecturer_firstName=
+$_SESSION['firstName'] ?? 'lecturer';
+$lecturer_id = $_SESSION['user_id'] ?? 'N/A';
+?>
+
 <?php include '../../includes/header.php' ; ?>
+
 <!-- mobile navigation -->
    <header class="navbar">
   <div class="logo">
@@ -50,13 +60,14 @@
     </select>
     </div>
   </div>
+
   <div class = "info-containerX">
     <div class = "lecturer-user-profile flex-r">
       <div class = "lecturer-profile-pic">
 
       </div>
       <div class = "lecturer-profile-infor flex-c">
-         <p><strong>Username</strong></p>
+         <p><strong><?php echo htmlspecialchars($lecturer_firstName);?></strong></p>
          <p>Lecturer</p>
       </div>
     </div>
@@ -64,7 +75,7 @@
     <div class = "lecturer-window-info flex-c">
     <div class = "flex-r lecturer-window-infoX">
     <p><strong>Lecturer ID:</strong></p>
-    <p class = "ml">10111</p>
+    <p class = "ml"><?php echo htmlspecialchars($lecturer_id);?></p>
     </div>
 
     <div class = "flex-r lecturer-window-infoX">
