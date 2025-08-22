@@ -14,6 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
     $lastName = clean_input($_POST['lastName']);
     $email = clean_input($_POST['email']);
     $password = $_POST['password']; // raw for hashing
+    $confirm_password = $_POST['confirm_password'];
+
+    if ($password !== $confirm_password){
+        die ("Passwords do not match!");
+    }
     $institute = clean_input($_POST['institute']);
     $role = clean_input($_POST['role']);
     $userid = clean_input($_POST['userid']);
@@ -64,8 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
 
     
     <h1 class = " mt " >Register below</h1>
-    <div class = "form-group">
-     <form action = "register.php" method = "POST" class = "form">
+    <div class = "form-group ">
+     <form action = "register.php" method = "POST" class = "form marg-top">
         <input type="hidden" name="role"  value = "<?php echo htmlspecialchars($role); ?>">
            <div class = "input-group">
               <label for = "firstName">First Name:</label>
@@ -94,10 +99,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
 
                 <div class = "input-group">
             <label for = "password">Password:</label>
-                <input type = "text" name = "password" class = "input-bar" placeholder = "Enter your password" required>
+                <input type = "password" id = "password" name = "password" class = "input-bar" placeholder = "Enter your password" required>
                 </div>
+               
+
+          <div class = "input-group">
+            <label for = "confirm_password"> Confirm Password:</label>
+                <input type = "password" id = "confirm_password" name = "confirm_password" class = "input-bar" placeholder = "Confirm your password" required>
+                </div>
+             
                <div class = "button-container">
-            <button type = "submit" class = "button" name="signup">Register</button>
+            <button type = "submit" class = "button mt" name="signup">Register</button>
            
         </div>
 </form>
