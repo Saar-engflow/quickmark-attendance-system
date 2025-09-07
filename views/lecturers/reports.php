@@ -44,7 +44,7 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
 </header>
 
 <section>
- <h1>Views</h1>
+ <h1>Reports</h1>
   
 <div class ="side-bar-mobile">
   <div 
