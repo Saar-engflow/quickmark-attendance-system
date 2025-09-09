@@ -55,7 +55,9 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
     <h4>Courses Conducted:</h4>
     <!-- coURSES num -->
     <p class = "count-num mt">0</p>
-    <div class = " flex-c add-course"><p>open</p></div>
+    <div 
+    onclick = "window.location.href = 'courses.php'"
+    class = " flex-c add-course"><p>open</p></div>
  </div>
 
   <!-- attendance percentage -->

@@ -90,10 +90,10 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
      </div>
  
   <button class = "app-button "
-  onclick =" openWindow()"
+  onclick =" openWindow();"
   >Open  window</button>
   <button class = "app-button "
-  onclick =" closeWindow()"
+  onclick =" closeWindow();"
   >CLose window</button>
     </div>
 
@@ -141,6 +141,7 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
    class = "optn flex-c">Reports</div> 
 </div> 
 </section>
+
 <script>
 
 function openWindow() {
@@ -152,7 +153,7 @@ function openWindow() {
     fetch("open_window.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: course_id=${courseId}&lat=${lat}&lng=${lng}&radius=${radius}
+        body: `course_id=${courseId}&lat=${lat}&lng=${lng}&radius=${radius}`
     })
     .then(res => res.text())
     .then(data => {
