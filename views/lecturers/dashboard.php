@@ -62,12 +62,14 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
   <div class = " flex-c l-card-container">
     <h4>Attendance Percentage</h4>
     <p class = "count-num mt">0%</p>
-    <div class = " flex-c add-course"><p>open</p></div>
+    <div
+      onclick = "window.location.href = 'reports.php'"
+    class = " flex-c add-course"><p>open</p></div>
   </div>
     
   <!-- Recent Activity -->
    <div class = "flex-c l-card-container">
-     <h4>Attendance Percentage</h4>
+     <h4>Recent Activity</h4>
      <div class = "flex-c">
       <p class = " m-top2 ">last attendance marked at </p>
       <p>00/00/00 -00:00hrs</p>
@@ -85,14 +87,18 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
    <h4>least attending</h4>
    <p>Students:</p>
       <p class = "count-num mt">0</p>
-    <div class = " flex-c add-course"><p>open</p></div>
+    <div 
+      onclick = "window.location.href = 'reports.php'"
+    class = " flex-c add-course"><p>open</p></div>
  </div>
  <!-- total number of students -->
   <div class = " flex-c l-card-container">
     <h4>Total </h4>
    <p>Students:</p>
       <p class = "count-num mt">0</p>
-    <div class = " flex-c add-course"><p>open</p></div>
+    <div
+      onclick = "window.location.href = 'reports.php'"
+    class = " flex-c add-course"><p>open</p></div>
   </div>
 
    <div class = " flex-c l-card-container">

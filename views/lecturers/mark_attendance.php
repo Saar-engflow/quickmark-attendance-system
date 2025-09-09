@@ -44,8 +44,9 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
 </header>
 
 <section>
+  
   <div class = "move">
-  <div class = lecturer>
+  <div class =  "lecturer mt">
     
    <div class = "left-section">
       
@@ -88,7 +89,12 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
 
      </div>
  
-  <button class = "app-button mt">Open  window</button>
+  <button class = "app-button "
+  onclick =" openWindow()"
+  >Open  window</button>
+  <button class = "app-button "
+  onclick =" closeWindow()"
+  >CLose window</button>
     </div>
 
 
@@ -135,4 +141,42 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
    class = "optn flex-c">Reports</div> 
 </div> 
 </section>
+<script>
+
+function openWindow() {
+    let courseId = prompt("Enter Course ID"); 
+    let lat = -15.4067; // placeholder
+    let lng = 28.2871;  // placeholder
+    let radius = 50;
+
+    fetch("open_window.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: course_id=${courseId}&lat=${lat}&lng=${lng}&radius=${radius}
+    })
+    .then(res => res.text())
+    .then(data => {
+        if (data.includes("success")) {
+            alert("✅ Window opened");
+            location.reload();
+        } else {
+            alert("❌ Failed: " + data);
+        }
+    });
+}
+
+function closeWindow() {
+    fetch("close_window.php", { method: "POST" })
+    .then(res => res.text())
+    .then(data => {
+        if (data.includes("success")) {
+            alert("✅ Window closed");
+            location.reload();
+        } else {
+            alert("❌ Failed: " + data);
+        }
+   });
+}
+
+</script>
 <?php include '../../includes/footer.php' ; ?>

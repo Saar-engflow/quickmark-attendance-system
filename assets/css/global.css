@@ -60,4 +60,7 @@
   .dashboard-card {
     flex-direction: row;
   }
+  .desktop-mt {
+    margin-top: 180px;
+  }
 }
