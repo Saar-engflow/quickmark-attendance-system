@@ -55,10 +55,13 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
       <label for = "Location">Select Location:</label>
     <select name = "Location" id = "Location">
       <option value = "none">None</option>
-      <option value = "kb-classes">KB-Classes</option>
+      <option value = "kb-classes">KB-1</option>
+      <option value = "kb-classes">KB-2</option>
+      <option value = "kb-classes">KB-3</option>
+     <option value = "kb-classes">KB-4</option>
+     <option value = "kb-classes">KB-5</option>
       <option value = "computer-lab">Computer-Lab</option>
-      <option value = "f-classes">F-classes</option>
-      <option value = "auditorium">Auditorium</option>
+     
     </select>
     </div>
   </div>
@@ -80,10 +83,7 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
     <p class = "ml"><?php echo htmlspecialchars($lecturer_id);?></p>
     </div>
 
-    <div class = "flex-r lecturer-window-infoX">
-     <p><strong>Location:</strong></p>
-     <p class = "ml">KB-Classes</p>
-    </div>
+  
 
     </div>
 
@@ -94,7 +94,7 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
   >Open  window</button>
   <button class = "app-button "
   onclick =" closeWindow();"
-  >CLose window</button>
+  >Close window</button>
     </div>
 
 
@@ -103,7 +103,9 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
           <p>Students clocked in:</p>
         </div>
         <div class = "clock-in-container flex-c">
-          <p>No student has clocked in...</p>
+          <p class = "count-num">0</p>
+
+         
         </div>
 </div>
 </div>
@@ -145,7 +147,7 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
 <script>
 
 function openWindow() {
-    let courseId = prompt("Enter Course ID"); 
+    let courseCode = prompt("Enter Course code")?.trim(); 
     let lat = -15.4067; // placeholder
     let lng = 28.2871;  // placeholder
     let radius = 50;
@@ -153,7 +155,7 @@ function openWindow() {
     fetch("open_window.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `course_id=${courseId}&lat=${lat}&lng=${lng}&radius=${radius}`
+        body: `course_code=${courseCode}&lat=${lat}&lng=${lng}&radius=${radius}`
     })
     .then(res => res.text())
     .then(data => {

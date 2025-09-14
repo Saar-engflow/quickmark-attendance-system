@@ -1,0 +1,168 @@
+/* positions */
+.m-top2 {
+  margin-top: 140px;
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 95%;
+
+  padding: 20px;
+  margin-top: 40px;
+  gap: 8px;
+}
+
+.l-card-container {
+  border-radius: 14px;
+
+  background-color: rgba(0, 54, 45, 1);
+  width: 300px;
+  height: 300px;
+}
+
+/* Courses conducted  */
+.courses-container1 {
+  background-color: rgb(0, 37, 31);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  height: 200px;
+  width: 280px;
+  margin-top: 10px;
+  padding-top: 12px;
+  overflow-y: auto;
+}
+.course-list {
+  background-color: rgb(1, 136, 113);
+  border-radius: 14px;
+  height: 30px;
+  width: 240px;
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+.add-course {
+  background-color: rgb(0, 136, 113);
+  border-radius: 14px;
+  height: 40px;
+  width: 180px;
+  margin-top: 10px;
+}
+.courses-container {
+  border-radius: 14px;
+  border: 1px solid rgb(22, 44, 44);
+  min-height: 400px;
+  min-width: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+.cse-card {
+  background-color: rgb(22, 44, 44);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 40px;
+  width: 280px;
+  overflow-x: auto;
+}
+.ml {
+  margin-left: 10px;
+}
+
+.desktop-btnn {
+  display: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  background: rgb(22, 44, 44);
+  color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+}
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+.course-card {
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 10px;
+}
+.course-card.selected {
+  border: 2px solid red;
+}
+
+.sessions-table {
+  width: 100%;
+  border-collapse: collapse; /* removes double borders */
+  font-size: 14px; /* slightly smaller text */
+}
+
+/* table header cells */
+.sessions-table thead th {
+  background-color: rgba(0, 54, 45, 1); /* light gray header */
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+/* table body cells */
+.sessions-table tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgb(0, 37, 31);
+}
+
+/* alternate row coloring */
+.sessions-table tbody tr:nth-child(even) {
+  background-color: rgb(1, 136, 113);
+}
+
+/* hover effect for rows */
+.sessions-table tbody tr:hover {
+  background-color: rgb(1, 185, 155); /* very light blue highlight */
+}
+
+@media (min-width: 1024px) {
+  .dashboard-card {
+    flex-direction: row;
+  }
+  .desktop-mt {
+    margin-top: 180px;
+  }
+
+  .desktop-mt2 {
+    margin-top: 100px;
+  }
+
+  .courses-container {
+    min-width: 800px;
+  }
+
+  .cse-card {
+    width: 780px;
+  }
+  .desktop-btnn {
+    display: inline-block;
+  }
+}

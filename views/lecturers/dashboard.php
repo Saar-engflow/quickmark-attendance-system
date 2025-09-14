@@ -9,6 +9,17 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
 
 <?php include '../../includes/header.php' ; ?>
 
+<?php
+// Count courses for logged-in lecturer
+$course_count = 0;
+$sql = "SELECT COUNT(*) AS total FROM courses WHERE lecturer_user_id = '$lecturer_id'";
+$result = mysqli_query($conn, $sql);
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $course_count = $row['total'];
+}
+?>
+
 <!-- mobile navigation -->
    <header class="navbar">
   <div class="logo">
@@ -54,7 +65,7 @@ $lecturer_id = $_SESSION['user_id'] ?? 'N/A';
  <div class = " flex-c l-card-container">
     <h4>Courses Conducted:</h4>
     <!-- coURSES num -->
-    <p class = "count-num mt">0</p>
+    <p class = "count-num mt"><?php echo $course_count; ?></p>
     <div 
     onclick = "window.location.href = 'courses.php'"
     class = " flex-c add-course"><p>open</p></div>
