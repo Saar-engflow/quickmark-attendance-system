@@ -12,7 +12,9 @@
  <p class = "plain-text">Since you've registered, all you need to do is login the mobile app and you good to go!.</P>
     </div>
 
-<button class = "app-button">Go to App</button>
+<button onclick = " alert('Please install the app first on mobile');"
+
+class = "app-button">Go to App</button>
 <button
  onclick = "window.location.href = '../../index.php '"
  class = "app-button">home page > </button>

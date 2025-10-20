@@ -99,11 +99,12 @@ $avg_attendance = ($total_sessions > 0) ? round($total_present / ($total_session
 <section>
   <div class="desktop-mt">
     <h1>View Attendance</h1>
-    <div>
-      <p class="mt">Total sessions: <?= $total_sessions ?></p>
-      <p>Average attendance rate: <?= $avg_attendance ?>%</p>
-      <p>Best Session: <?= $best_session['date'] ?? '00/00/00' ?> (<?= round($best_session['rate'] ?? 0) ?>% present)</p>
-      <p>Lowest Session: <?= $lowest_session['date'] ?? '00/00/00' ?> (<?= round($lowest_session['rate'] ?? 0) ?>% present)</p>
+    <div class ="flex-r">
+      <button class = "app-button ">  <p>Total sessions: <?= $total_sessions ?></p></button>
+     <button class = "app-button ml "> <p>Average attendance rate: <?= $avg_attendance ?>%</p></button>
+       <button class = "app-button ml ">   <p>Best Session: <?= $best_session['date'] ?? '00/00/00' ?> (<?= round($best_session['rate'] ?? 0) ?>% present)</p></button>
+      <button class = "app-button ml "> <p>Lowest Session: <?= $lowest_session['date'] ?? '00/00/00' ?> (<?= round($lowest_session['rate'] ?? 0) ?>% present)</p></button>
+      
     </div>
 
     <!-- Sessions Table -->
@@ -137,14 +138,14 @@ $avg_attendance = ($total_sessions > 0) ? round($total_present / ($total_session
     <div onclick="window.location.href = 'dashboard.php'" class="optn flex-c">Dashboard</div>
     <div onclick="window.location.href = 'mark_attendance.php'" class="optn flex-c">Mark</div>
     <div onclick="window.location.href = 'view_attendance.php'" class="optn flex-c">View</div>
-    <div onclick="window.location.href = 'reports.php'" class="optn flex-c">Reports</div>
+    <!-- <div onclick="window.location.href = 'reports.php'" class="optn flex-c">Reports</div> -->
   </div>
 
   <div class="side-bar-desktop">
     <div onclick="window.location.href = 'dashboard.php'" class="optn flex-c">Dashboard</div>
     <div onclick="window.location.href = 'mark_attendance.php'" class="optn flex-c">Mark Attendance</div>
     <div onclick="window.location.href = 'view_attendance.php'" class="optn flex-c">View Attendance</div>
-    <div onclick="window.location.href = 'reports.php'" class="optn flex-c">Reports</div>
+    <!-- <div onclick="window.location.href = 'reports.php'" class="optn flex-c">Reports</div> -->
   </div>
 </section>
 

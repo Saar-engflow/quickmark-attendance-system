@@ -18,6 +18,21 @@ if ($result) {
     $row = mysqli_fetch_assoc($result);
     $course_count = $row['total'];
 }
+
+// Get last attendance marked time for this lecturer
+$last_attendance = null;
+$sql_last = "SELECT MAX(a.clock_in_time) AS last_marked
+             FROM attendance a
+             INNER JOIN sessions s ON a.session_id = s.session_id
+             INNER JOIN courses c ON s.course_id = c.course_id
+             WHERE c.lecturer_user_id = '$lecturer_id'";
+$res_last = mysqli_query($conn, $sql_last);
+if ($res_last) {
+    $row_last = mysqli_fetch_assoc($res_last);
+    $last_attendance = $row_last['last_marked'] ?? null;
+}
+
+
 ?>
 
 <!-- mobile navigation -->
@@ -72,54 +87,64 @@ if ($result) {
  </div>
 
   <!-- attendance percentage -->
-  <div class = " flex-c l-card-container">
+  <!-- <div class = " flex-c l-card-container">
     <h4>Attendance Percentage</h4>
     <p class = "count-num mt">0%</p>
     <div
       onclick = "window.location.href = 'reports.php'"
     class = " flex-c add-course"><p>open</p></div>
-  </div>
+  </div> -->
     
-  <!-- Recent Activity -->
-   <div class = "flex-c l-card-container">
-     <h4>Recent Activity</h4>
-     <div class = "flex-c">
-      <p class = " m-top2 ">last attendance marked at </p>
-      <p>00/00/00 -00:00hrs</p>
+ <!-- Recent Activity -->
+<div class="flex-c l-card-container">
+    <h4>Lets see who isn't attending!</h4>
+    <div class="flex-c">
+        <p class="m-top2">Last attendance marked at:</p>
+        <p>
+            <?php 
+                if ($last_attendance) {
+                    echo date("d/m/Y - H:i", strtotime($last_attendance)) . " hrs";
+                } else {
+                    echo "No attendance yet";
+                }
+            ?>
+        </p>
     </div>
-     <div 
-     onclick = "window.location.href = 'mark_attendance.php'"
-     class = " flex-c add-course mt mt"><p>Mark Attendance</p></div>
-   </div>
+    <div 
+        onclick="window.location.href='mark_attendance.php'" 
+        class="flex-c add-course mt mt">
+        <p>Mark Attendance</p>
+    </div>
+</div>
  
 </div>
 <!-- bottom-deck cards -->
 <div class = "dashboard-card">
  <!-- Least attending students -->
- <div class = " flex-c l-card-container">
+ <!-- <div class = " flex-c l-card-container">
    <h4>least attending</h4>
    <p>Students:</p>
       <p class = "count-num mt">0</p>
     <div 
       onclick = "window.location.href = 'reports.php'"
-    class = " flex-c add-course"><p>open</p></div>
+    class = " flex-c add-course"><p>open</p></div> -->
  </div>
  <!-- total number of students -->
-  <div class = " flex-c l-card-container">
+  <!-- <div class = " flex-c l-card-container">
     <h4>Total </h4>
    <p>Students:</p>
       <p class = "count-num mt">0</p>
     <div
       onclick = "window.location.href = 'reports.php'"
     class = " flex-c add-course"><p>open</p></div>
-  </div>
+  </div> -->
 
-   <div class = " flex-c l-card-container">
+   <!-- <div class = " flex-c l-card-container">
     <h4>Admin</h4>
    <p>Notifications:</p>
       <p class = "count-num mt">0</p>
     <div class = " flex-c add-course"><p>open</p></div>
-   </div>
+   </div> -->
  
 </div>
 
@@ -137,9 +162,9 @@ if ($result) {
   <div 
   onclick = "window.location.href = 'view_attendance.php'"
   class = "optn flex-c">View</div>
-   <div 
+   <!-- <div 
    onclick = "window.location.href = 'reports.php'"
-   class = "optn flex-c">Reports</div> 
+   class = "optn flex-c">Reports</div>  -->
 </div> 
 
  <div class ="side-bar-desktop">
@@ -152,10 +177,10 @@ if ($result) {
   <div 
   onclick = "window.location.href = 'view_attendance.php'"
   class = "optn flex-c">View Attendance</div>
-   <div 
+   <!-- <div 
    onclick = "window.location.href = 'reports.php'"
    class = "optn flex-c">Reports</div> 
-</div> 
+</div>  -->
 </div>
 </section>
 

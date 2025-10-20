@@ -79,4 +79,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         
 </div>
 
+
+ <!-- <script>
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // stop form submission until validation passes
+
+    let email = document.querySelector("input[name='email']").value.trim();
+    let password = document.querySelector("input[name='password']").value;
+
+    // Email validation
+    if (email === "") {
+        alert("Please enter your email.");
+        return false;
+    }
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    // Password validation
+    if (password === "") {
+        alert("Please enter your password.");
+        return false;
+    }
+
+    // All checks passed    ,good then u submit kayli
+    this.submit();
+});
+</script>  -->
+
+
 <?php include '../../includes/footer.php' ; ?>

@@ -119,21 +119,21 @@ $adminCount = $result->fetch_assoc()['count'];
          <p class="count-num"><?php echo $totalUsers; ?></p>
         </div>
         <div class = "user-m-footer flex-c">
-          <button>open</button>
+          <button onclick = " window.location.href = 'manage_users.php'">open</button>
         </div>
         </div>
 
-      <div class = "user-m flex-c">
+      <!-- <div class = "user-m flex-c">
         <div class= "user-m-header flex-c">
       <h4>System logs</h4>
         </div>
         <div class ="user-m-cont flex-c">
-         <p>nothing yet</p>
+         <p>private</p>
         </div>
      <div class = "user-m-footer flex-c">
-          <button>open</button>
+          <button onclick = " window.location.href = 'system_logs.php'">open</button>
         </div>
-    </div>
+    </div> -->
      
 </div>
   </div>

@@ -73,13 +73,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
      <form action = "register.php" method = "POST" class = "form marg-top">
         <input type="hidden" name="role"  value = "<?php echo htmlspecialchars($role); ?>">
            <div class = "input-group">
-              <label for = "firstName">First Name:</label>
-            <input type = "text" name = "firstName" class = "input-bar" placeholder = "Enter your first name" required>
+              <label for = "firstName" >First Name:</label>
+            <input type = "text" name = "firstName"  id = "firstName" class = "input-bar" placeholder = "Enter your first name" required>
            </div>
            
               <div class = "input-group">
                <label for = "lastName">Last Name:</label>
-            <input type = "text" name = "lastName" class = "input-bar" placeholder = "Enter your last name" required>
+            <input type = "text" name = "lastName" id = "lastName" class = "input-bar" placeholder = "Enter your last name" required>
               </div>
             
                 <div class = "input-group">
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
              
                 <div class = "input-group">
                 <label for = "email">Email:</label>
-                <input type = "text" name = "email" class = "input-bar" placeholder = "Enter your email" required>
+                <input type = "text" name = "email" id ="email" class = "input-bar" placeholder = "Enter your email" required>
                 </div>
 
                 <div class = "input-group">
@@ -123,5 +123,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
    
         
 </div>
-        
+   <script>
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // stop form submission until validated
+    
+    let firstName = document.getElementById("firstName").value.trim();
+    let lastName = document.getElementById("lastName").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let institute = document.querySelector("input[name='institute']").value.trim();
+    let userid = document.querySelector("input[name='userid']").value.trim();
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirm_password").value;
+
+    // Name validation: letters only, at least 3 characters
+    let namePattern = /^[A-Za-z]{3,}$/;
+    if (!namePattern.test(firstName)) {
+        alert("First name must be at least 3 letters and contain only letters.");
+        return false;
+    }
+    if (!namePattern.test(lastName)) {
+        alert("Last name must be at least 3 letters and contain only letters.");
+        return false;
+    }
+
+    // Email validation
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    // Institute validation
+    if (institute.length < 2) {
+        alert("Please enter your institute name.");
+        return false;
+    }
+
+    // User ID validation
+    if (userid.length < 2) {
+        alert("Please enter your user ID.");
+        return false;
+    }
+
+    // Password validation: min 6 chars, at least 1 uppercase, 1 lowercase, 1 number
+    // let passwordPattern = /^(?=.[a-z])(?=.[A-Z])(?=.*\d).{4,}$/;
+    // if (!passwordPattern.test(password)) {
+    //     alert("Password must be at least 6 characters long and include uppercase, lowercase, and a number.");
+    //     return false;
+    // }
+
+    // Confirm password
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
+
+    // All checks passed
+    this.submit();
+});
+</script>
+
+
+
 <?php include '../../includes/footer.php' ; ?>
