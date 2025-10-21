@@ -113,7 +113,7 @@ function openWindow() {
         position => {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
-            const radius = 50;
+            const radius = 50000000;
 
             const data = new URLSearchParams({ course_code: courseCode, lat, lng, radius });
 

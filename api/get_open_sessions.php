@@ -1,26 +1,29 @@
 <?php
-session_start();
-include '../../includes/db_connect.php';
+header('Content-Type: application/json');
+include '../includes/db_connect.php';
 
-// Check if the student is logged in
-if (!isset($_SESSION['student_id'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Not logged in']);
+// Get student_id and coordinates from POST
+$student_id = $_POST['user_id'] ?? null;
+$student_lat = isset($_POST['lat']) ? floatval($_POST['lat']) : 0;
+$student_lng = isset($_POST['lng']) ? floatval($_POST['lng']) : 0;
+
+
+
+if (!$student_id) {
+    echo json_encode(['status' => 'error', 'message' => 'Student ID required']);
     exit;
 }
 
-$student_id = $_SESSION['student_id'];
-
-// Auto-close expired sessions (cleanup)
-$autoCloseQuery = "
+// Auto-close expired sessions
+$conn->query("
     UPDATE sessions
     SET is_window_open = 0, window_closed_at = NOW()
     WHERE (session_date < CURDATE())
        OR (end_time IS NOT NULL AND NOW() > end_time)
        OR (is_window_open = 1 AND TIME(NOW()) > end_time)
-";
-$conn->query($autoCloseQuery);
+");
 
-// Fetch currently open sessions (time-aware)
+// Fetch open sessions (server-side distance)
 $query = "
     SELECT 
         s.session_id, 
@@ -30,7 +33,12 @@ $query = "
         s.radius_meters, 
         s.is_window_open, 
         s.start_time, 
-        s.end_time
+        s.end_time,
+        (6371000 * acos(
+            cos(radians(?)) * cos(radians(s.location_lat)) *
+            cos(radians(s.location_lng) - radians(?)) +
+            sin(radians(?)) * sin(radians(s.location_lat))
+        )) AS distance_meters
     FROM sessions s
     JOIN courses c ON s.course_id = c.course_id
     WHERE s.is_window_open = 1
@@ -41,24 +49,44 @@ $query = "
       )
 ";
 
-$result = $conn->query($query);
-
-if (!$result) {
-    echo json_encode(['status' => 'error', 'message' => 'Database query failed: ' . $conn->error]);
-    exit;
-}
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ddd", $student_lat, $student_lng, $student_lat);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $sessions = [];
 while ($row = $result->fetch_assoc()) {
     $sessions[] = $row;
 }
 
-// Respond with open sessions (if any)
+// Include debug info
+$response = [];
 if (count($sessions) > 0) {
-    echo json_encode(['status' => 'success', 'sessions' => $sessions]);
+    foreach ($sessions as $s) {
+        $response[] = [
+            'session_id' => $s['session_id'],
+            'course_name' => $s['course_name'],
+            'lat' => $s['location_lat'],
+            'lng' => $s['location_lng'],
+            'radius_m' => $s['radius_meters'],
+            'is_window_open' => $s['is_window_open'],
+            'start_time' => $s['start_time'],
+            'end_time' => $s['end_time'],
+            'distance_m' => $s['distance_meters']
+        ];
+    }
+    echo json_encode(['status' => 'success', 'sessions' => $response]);
 } else {
-    echo json_encode(['status' => 'none', 'message' => 'No active sessions right now']);
+    echo json_encode([
+        'status' => 'none',
+        'message' => 'No active sessions detected',
+        'debug' => [
+            'student_lat' => $student_lat,
+            'student_lng' => $student_lng
+        ]
+    ]);
 }
 
+$stmt->close();
 $conn->close();
 ?>
