@@ -124,46 +124,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
         
 </div>
    <script>
-document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault(); // stop form submission until validated
+// document.querySelector("form").addEventListener("submit", function(event) {
+//     event.preventDefault(); // stop form submission until validated
     
-    let firstName = document.getElementById("firstName").value.trim();
-    let lastName = document.getElementById("lastName").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let institute = document.querySelector("input[name='institute']").value.trim();
-    let userid = document.querySelector("input[name='userid']").value.trim();
-    let password = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirm_password").value;
+//     let firstName = document.getElementById("firstName").value.trim();
+//     let lastName = document.getElementById("lastName").value.trim();
+//     let email = document.getElementById("email").value.trim();
+//     let institute = document.querySelector("input[name='institute']").value.trim();
+//     let userid = document.querySelector("input[name='userid']").value.trim();
+//     let password = document.getElementById("password").value;
+//     let confirmPassword = document.getElementById("confirm_password").value;
 
     // Name validation: letters only, at least 3 characters
-    let namePattern = /^[A-Za-z]{3,}$/;
-    if (!namePattern.test(firstName)) {
-        alert("First name must be at least 3 letters and contain only letters.");
-        return false;
-    }
-    if (!namePattern.test(lastName)) {
-        alert("Last name must be at least 3 letters and contain only letters.");
-        return false;
-    }
+    // let namePattern = /^[A-Za-z]{3,}$/;
+    // if (!namePattern.test(firstName)) {
+    //     alert("First name must be at least 3 letters and contain only letters.");
+    //     return false;
+    // }
+    // if (!namePattern.test(lastName)) {
+    //     alert("Last name must be at least 3 letters and contain only letters.");
+    //     return false;
+    // }
 
     // Email validation
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        return false;
-    }
+    // let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // if (!emailPattern.test(email)) {
+    //     alert("Please enter a valid email address.");
+    //     return false;
+    // }
 
     // Institute validation
-    if (institute.length < 2) {
-        alert("Please enter your institute name.");
-        return false;
-    }
+    // if (institute.length < 2) {
+    //     alert("Please enter your institute name.");
+    //     return false;
+    // }
 
     // User ID validation
-    if (userid.length < 2) {
-        alert("Please enter your user ID.");
-        return false;
-    }
+    // if (userid.length < 2) {
+    //     alert("Please enter your user ID.");
+    //     return false;
+    // }
 
     // Password validation: min 6 chars, at least 1 uppercase, 1 lowercase, 1 number
     // let passwordPattern = /^(?=.[a-z])(?=.[A-Z])(?=.*\d).{4,}$/;
@@ -173,14 +173,14 @@ document.querySelector("form").addEventListener("submit", function(event) {
     // }
 
     // Confirm password
-    if (password !== confirmPassword) {
-        alert("Passwords do not match.");
-        return false;
-    }
+//     if (password !== confirmPassword) {
+//         alert("Passwords do not match.");
+//         return false;
+//     }
 
-    // All checks passed
-    this.submit();
-});
+//     // All checks passed
+//     this.submit();
+// });
 </script>
 
 

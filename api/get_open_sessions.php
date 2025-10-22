@@ -1,4 +1,4 @@
-<?php
+ <?php
 header('Content-Type: application/json');
 include '../includes/db_connect.php';
 
@@ -14,13 +14,14 @@ if (!$student_id) {
     exit;
 }
 
-// Auto-close expired sessions
 $conn->query("
     UPDATE sessions
     SET is_window_open = 0, window_closed_at = NOW()
-    WHERE (session_date < CURDATE())
-       OR (end_time IS NOT NULL AND NOW() > end_time)
-       OR (is_window_open = 1 AND TIME(NOW()) > end_time)
+    WHERE is_window_open = 1
+      AND (
+          session_date < CURDATE()
+          OR (session_date = CURDATE() AND end_time IS NOT NULL AND TIME(NOW()) > end_time)
+)
 ");
 
 // Fetch open sessions (server-side distance)
@@ -44,10 +45,12 @@ $query = "
     WHERE s.is_window_open = 1
       AND s.session_date = CURDATE()
       AND (
-          (s.end_time IS NULL AND TIME(NOW()) >= s.start_time)
+          (s.end_time IS NULL AND TIME(NOW()) BETWEEN s.start_time AND ADDTIME(s.start_time, '01:00:00'))
           OR (s.end_time IS NOT NULL AND TIME(NOW()) BETWEEN s.start_time AND s.end_time)
       )
+      AND TIME(NOW()) >= s.start_time
 ";
+
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param("ddd", $student_lat, $student_lng, $student_lat);
@@ -89,4 +92,4 @@ if (count($sessions) > 0) {
 
 $stmt->close();
 $conn->close();
-?>
+?> 
